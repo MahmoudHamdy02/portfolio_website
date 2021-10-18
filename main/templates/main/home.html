@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="HandheldFriendly" content="true" />
+    <meta name="MobileOptimized" content="320" />
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width, user-scalable=no" />
+    <title>Portfolio</title>
+    {% load static %}
+    <link rel='stylesheet' href="{% static 'styles.css'%}">
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="mobile-list">
+            <div id="mobile-text">{% block mobile_title %}Home{% endblock %}</div>
+            <div class="burger" onclick="expand()">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </div>
+        <ul class="navbar-list">
+            <li class="navbar-item"><a class="nav-link" href="/">Home</a></li>
+            <li class="navbar-item"><a class="nav-link" href="https://github.com/MahmoudHamdy02" target="_blank">GitHub</a></li>
+            <li class="navbar-item"><a class="nav-link" href="/projects/">Projects</a></li>
+            <li class="navbar-item"><a class="nav-link" href="/contact/">Contact</a></li>
+        </ul>
+    </nav>
+    {% block content%}
+    <main>
+        <div id="homeheader">
+            <p>Hi, I'm Mahmoud Hamdy,&nbsp;<span id="typed-text"></span></p>
+        </div>
+        <div class="container about">
+            <p id="container-header">About me</p>
+            <ul style="padding-left: 1rem;">
+                <li>I'm Mahmoud Hamdy, electrical engineering sophomore at ASU University.</li>
+                <li>I've started my programming journey in highschool, since then, I have learned and applied multiple languages in various projects.</li>
+                <li>I'm currently a member of the IT Department in ASU Racing Team.</li>
+            </ul>
+        </div>
+
+        <div class="container proficiency">
+            <p id="container-header">Language Proficiency</p>
+            <div id="language-container">
+                <ul id="list">
+                    <li>Python</li>
+                    <li><div class="language-bar python"></div></li>
+                    <li>HTML/CSS</li>
+                    <li><div class="language-bar htmlcss"></div></li>
+                    <li>Javascript</li>
+                    <li><div class="language-bar js"></div></li>
+                    <li>C++</li>
+                    <li><div class="language-bar cpp"></div></li>
+                    <li>SQL</li>
+                    <li><div class="language-bar sql"></div></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container certificate">
+            <p id="container-header">Certificates</p>
+            <ul id="list">
+                <li><a href="{% static 'fwd.pdf' %}" class="link" target="_blank" style="text-decoration: none;"><u>Web Dev:</u> Web Development Challenger Course, Egypt FWD</a> </li>
+                <li><a href="{% static 'Coursera.pdf' %}" class="link" target="_blank" style="text-decoration: none;"><u>SQL:</u> Using Databases with Python Course, University of Michigan</a></li>
+            </ul>
+        </div>
+        <div class="container resume">
+            <p id="container-header">More Info</p>
+            <p>Want more info about me? Check out my <a href="{% static 'Resume.pdf' %}" class="link" target="_blank">resume!</a></p>
+        </div>
+        <div class="blankspace" style="padding-bottom: 3rem;"></div>
+    </main>
+    {% endblock %}
+    <script src="{% static 'main.js' %}"></script>
+</body>
+</html>

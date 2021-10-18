@@ -1,0 +1,32 @@
+{% extends 'main/home.html'%}
+{% block mobile_title %} Contact {% endblock%}
+{% block content%}
+<main>
+    <div>
+        <p id="mainheader">Contact me or send feedback!</p>
+    </div>
+    <div style="display: flex; justify-content: center; padding: 0; margin: 0;">
+        <div class="container contact">
+            <form id="contact-form" action="" method="POST">
+                {% csrf_token %}
+                <p style="padding: 0; margin: 0;"> {{ error }} </p>
+                <div class="field">
+                    <input type="email" name="email" class="input email" placeholder=" " id="fromEmail" value="{{ email }}"/>
+                    <label for="email" class="label">Email</label>
+                </div>
+                <div class="field">
+                    <input type="text" name="name" class="input" placeholder=" " id="fromName" value="{{ name }}"/>
+                    <label for="name" class="label">Name</label>
+                </div>
+                <div class="field">
+                    <textarea name="message" class="input" placeholder=" " id="msg">{{ message }}</textarea>
+                    <label for="message" class="label">Message</label>
+                </div>
+                <div>
+                    <button id="send-button" type="submit">Send</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+{% endblock %}

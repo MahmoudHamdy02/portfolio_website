@@ -1,0 +1,32 @@
+{% extends 'main/home.html'%}
+{% block mobile_title %} Projects {% endblock%}
+{% block content%}
+<main>
+    <div>
+        <p id="mainheader">These are some of my latest projects!</p>
+    </div>
+    <section class="card-container">
+        <article class="container card">
+            <header id="container-header">Python</header>
+            <ul>
+                <li><u>Sudoku Solver:</u> Solve any sudoko puzzle in under 1 second using backtracking!</li>
+                <li><u>Email Sender:</u> Automatically send an e-mail with attachment in 1 click!</li>
+                <li><u>Spotify Ad Muter:</u> Mute the audio when a Spotify advertisement starts playing!</li>
+            </ul>
+        </article>
+        <article class="container card">
+            <header id="container-header">C++/Arduino</header>
+            <ul>
+                <li><u>Arduino Robot Car:</u> RC Car with object-detection capability.</li>
+                <li><u>RC Car Bluetooth App:</u> Mobile app that was using MIT Inventor</li>
+            </ul>
+        </article>
+        <article class="container card">
+            <header id="container-header">HTML/CSS/JS</header>
+                <ul>
+                    <li>This Website! You can view the source code <a href="https://github.com/MahmoudHamdy02" target="_blank" class="link">here</a></li>
+                </ul>
+        </article>
+    </section>
+</main>
+{% endblock %}
