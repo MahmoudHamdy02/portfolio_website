@@ -17,6 +17,7 @@ def contact(response):
         body = '''
         New Message from {} at {},
         
+        
         {}
         '''.format(name, email, message)
         if len(email) == 0:
