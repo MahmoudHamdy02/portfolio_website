@@ -15,9 +15,7 @@ def contact(response):
         email = response.POST.get('email')
         message = response.POST.get('message')
         body = '''
-        New Message from {} at {}.
-        
-        Message is: 
+        New Message from {} at {},
         
         {}
         '''.format(name, email, message)
