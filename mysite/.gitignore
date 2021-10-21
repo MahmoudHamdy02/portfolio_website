@@ -1,2 +1,6 @@
 .env
 .sqlite3
+**/migrations
+*.DS_Store
+**/__pycache__
+**/.DS_Store

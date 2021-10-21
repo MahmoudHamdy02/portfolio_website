@@ -248,7 +248,7 @@ body::-webkit-scrollbar-thumb {background-color: wheat}
 }
 
 .card {
-    height: 10rem;
+    /* height: 10rem; */
     margin-top: 0.5rem;
     box-shadow: 0rem -1rem 3rem black;
     width: 60%;
@@ -262,11 +262,11 @@ body::-webkit-scrollbar-thumb {background-color: wheat}
 }
 
 .card:hover~.card {
-    transform: translateY(2rem);
+    transform: translateY(3rem);
 }
 
 .card:not(:first-child) {
-    margin-top: -1.5rem;
+    margin-top: -3rem;
 }
 
 .card-container {
@@ -330,7 +330,7 @@ body::-webkit-scrollbar-thumb {background-color: wheat}
     display: none;
 }
 
-
+/* Mobile View */
 @media (max-width: 1000px) {
     .burger div, .burger{
         display: block;
@@ -354,5 +354,27 @@ body::-webkit-scrollbar-thumb {background-color: wheat}
     .navbar-list.active {
         display: flex;
         height: 100%;
+    }
+    .container.about {
+        margin-left: 0%;
+    }
+    .certificate {
+        margin-left: 0%;
+    }
+    
+    .proficiency, .resume {
+        margin-right: 0%;
+    }
+    .language-bar {
+        height: 0.75rem;
+    }
+    .card {
+        width: 90%;
+    }
+    .card:hover, .card:focus, .card:active {
+        width: 90%;
+    }
+    .contact {
+        width: 80%;
     }
 }
