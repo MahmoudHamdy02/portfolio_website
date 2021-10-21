@@ -29,7 +29,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     '192.168.1.6',
     '127.0.0.1',
-    'https://mahmoudhamdyportfolio.herokuapp.com/'
+    'mahmoudhamdyportfolio.herokuapp.com'
     ]
 
 
