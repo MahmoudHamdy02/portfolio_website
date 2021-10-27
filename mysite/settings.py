@@ -27,7 +27,7 @@ SECRET_KEY = env('SECRET_KEY')
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    '192.168.1.6',
+    '192.168.1.103',
     '127.0.0.1',
     'mahmoudhamdyportfolio.herokuapp.com'
     ]

@@ -9,6 +9,10 @@ def home(response):
     return render(response, "main/home.html", {})
 def projects(response):
     return render(response, "main/projects.html", {})
+def games(response):
+    return render(response, "main/games.html", {})
+def snake(response):
+    return render(response, "main/snake.html", {})
 def contact(response):
     if response.method == 'POST':
         name = response.POST.get('name')

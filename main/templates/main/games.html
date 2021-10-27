@@ -1,0 +1,19 @@
+{% extends 'main/home.html'%}
+{% block mobile_title %} Games {% endblock%}
+{% load static %}
+{% block content%}
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<main>
+    <div class="container-games">
+        <div class="container games">
+            <header id="container-header">Snake</header>
+            <div style="display: flex; justify-content: center;">
+                <img src="{% static 'snake.png' %}" alt="Snake" style="height: 90%; width: 60%;" class="snake">
+            </div>
+            <a href="/snake" class="link" style="margin-top: auto;"><div class="play-button">Play!</div></a>
+        </div>
+    </div>
+</main>
+{% endblock %}

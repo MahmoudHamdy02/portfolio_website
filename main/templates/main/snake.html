@@ -1,0 +1,150 @@
+{% extends 'main/home.html'%}
+{% block mobile_title %} Games {% endblock%}
+{% block content%}
+<head>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        canvas {
+            display: block;
+            margin: 20px auto;
+            background: #ccc;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<main id="app">
+    <canvas id="myCanvas" width="600" height="600"></canvas>
+    <p style="text-align: center; font-size: 2rem;"><span id="gameover"></span></p>
+    <p style="text-align: center; font-size: 2rem;">Score: <span id="score"></span></p>
+    <script>
+        if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+            document.getElementById("app").innerHTML = "This game is not supported on mobile"
+        }
+
+        var canvas = document.getElementById("myCanvas");
+        var ctx = canvas.getContext("2d");
+        var snake = [[300,300], [320,300], [340,300],];
+        var snakeColor = "#FF0000";
+        var dx = 20;
+        var dy = 20;
+        var direction = "right";
+        var foodx = Math.floor(Math.random() * 30) * 20;
+        var foody = Math.floor(Math.random() * 30) * 20;
+        var running = true;
+        document.getElementById("score").innerHTML = snake.length;
+        
+        function move () {
+            switch (direction) {
+                case "right":
+                    snake.shift();
+                    snake.push([snake[snake.length-1][0] + dx, snake[snake.length-1][1]]);
+                    break;
+                case "left":
+                    snake.shift();
+                    snake.push([snake[snake.length-1][0] - dx, snake[snake.length-1][1]]);
+                    break;
+                case "up":
+                    snake.shift();
+                    snake.push([snake[snake.length-1][0], snake[snake.length-1][1] - dy]);
+                    break;
+                case "down":
+                    snake.shift();
+                    snake.push([snake[snake.length-1][0], snake[snake.length-1][1] + dy]);
+                    break;
+            }
+        }
+
+        function drawFood() {
+            ctx.beginPath();
+            ctx.rect(foodx,foody,20,20);
+            ctx.fillStyle = "#00FF00";
+            ctx.fill();
+            ctx.closePath();
+        }
+
+        function drawSnake(x,y,r,g,b) {
+            ctx.beginPath();
+            ctx.rect(x,y,20,20);
+            ctx.fillStyle = `rgb(${r},${g},${b})`;
+            ctx.fill();
+            ctx.closePath();
+        }
+
+        function collision () {
+            if (snake[snake.length-1][0] == foodx && snake[snake.length-1][1] == foody) {
+                foodx = Math.floor(Math.random() * 30) * 20;
+                foody = Math.floor(Math.random() * 30) * 20;
+                document.getElementById("score").innerHTML = snake.length;
+                // for (i in snake) {
+                //     if (foodx == snake[i][0] && foody == snake[i][1]) {
+                //         foodx = Math.floor(Math.random() * 30) * 20;
+                //         foody = Math.floor(Math.random() * 30) * 20;
+                //     }
+                //     break;
+                // }
+                snake.unshift([snake[snake.length-1]]);
+            }
+        }
+
+        function selfCollision () {
+            for (let i=0; i < snake.length-1; i++) {
+                if (snake[i][0] == snake[snake.length-1][0] && snake[i][1] == snake[snake.length-1][1]) {
+                    running = false;
+                    console.log("collision");
+                    document.getElementById("gameover").innerHTML = "Game over!";
+                }
+            }
+        }
+        
+        function draw () {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawFood();
+            
+            
+            if (snake[snake.length-1][0] > canvas.width-20) {
+                snake[snake.length-1][0] = 0;
+            }
+            if (snake[snake.length-1][1] > canvas.height-20) {
+                snake[snake.length-1][1] = 0;
+            }
+            if (snake[snake.length-1][0] < 0) {
+                snake[snake.length-1][0] = canvas.width-20; 
+            }
+            if (snake[snake.length-1][1] < 0) {
+                snake[snake.length-1][1] = canvas.height-20;
+            }
+            for (let i in snake) {
+                drawSnake(snake[i][0], snake[i][1],255,0+i*8,0)
+            }
+            collision();
+            selfCollision();
+            if (running){move();}
+        }
+        document.addEventListener("keydown", keyDownHandler, false);
+        function keyDownHandler(e) {
+            if(e.key == "Right" || e.key == "ArrowRight" && direction != "left") {
+                direction = "right";
+            }
+            else if(e.key == "Left" || e.key == "ArrowLeft" && direction != "right") {
+                direction = "left";
+            }
+            else if(e.key == "Up" || e.key == "ArrowUp" && direction != "down") {
+                direction = "up";
+            }
+            else if(e.key == "Down" || e.key == "ArrowDown" && direction != "up") {
+                direction = "down";
+            }
+        }
+        setInterval(draw, 90);
+
+        window.addEventListener("keydown", function(e) {
+            if(["Space","ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].indexOf(e.code) > -1) {
+                e.preventDefault();
+            }
+        }, false);
+    </script>
+</main>
+{% endblock %}
