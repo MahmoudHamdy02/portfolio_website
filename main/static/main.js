@@ -21,7 +21,7 @@ if (window.location.pathname != "/") {
     }
 }
 else {
-    var homeHeader = ["Back-End Devel", "Front-End Dev", "Full-Stack Developer ", "& Student."]
+    var homeHeader = ["Back-End Devel", "Front-End Dev", "Full-Stack Developer ", "& Student."];
 
     function hometype() {
         if (currentChar < homeHeader[currentWord].length) {
